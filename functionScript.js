@@ -111,7 +111,6 @@ function sumNumbers(){
 }
 
 document.getElementById('val6').innerHTML = sumNumbers(1,2,3,4);
-
 // function call
 var person = {
   fullName: function() {
@@ -126,6 +125,66 @@ var person2 = {
   firstName:"Suwaiba",
   lastName: "Ismail"
 }
-var x = person.fullName.call(person1); 
-document.getElementById("val7").innerHTML = x; 
+var x3 = person.fullName.call(person1); 
+document.getElementById("val7").innerHTML = x3; 
 
+var x4 = person.fullName.call(person2)
+console.log(x4);
+
+//functions Apply 
+
+x5 =person.fullName.apply(person1);
+console.log(x5);
+
+var person2 = {
+  fullName: function(city, country) {
+    return this.firstName + " " + this.lastName + "," + city + "," + country;
+  }
+}
+var person3 = {
+  firstName:"muhammad",
+  lastName: "Ahmad"
+}
+x6 = person2.fullName.apply(person3, ["Oslo", "Norway"]);
+
+console.log(x6);
+
+
+// using the math.math method 
+// you can apply it in an array
+arr = [5,3,5,6,44,3,2];
+console.log(Math.max.apply(null,arr));
+
+// Closures
+
+//lifetime of a variable
+
+var counter = 0;
+
+// Function to increment counter
+function add() {
+  counter += 1;
+}
+
+add();
+add();
+add();
+
+console.log(counter);
+
+function adding() {
+  var counter = 0;
+  function plus() {counter += 1;}
+  plus();   
+  return counter;
+}
+
+console.log(adding()); //this will not work
+
+var add = (function (){
+  var counter = 0;
+  return function (){
+    counter += 1;
+    return counter;
+  }
+})();
